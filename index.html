@@ -1,3 +1,4 @@
+<html data-ng-app="PlacesApp">
 <head>
 <title>Places App</title>
 <link href="scripts/lib/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -14,11 +15,17 @@
                     <h2>Places App</h2>
                 </div>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/explore">Explore</a></li>
+                    <li><a href="#/about">About</a></li>
+                </ul>
+            </div>
 
         </div>
     </header>
     <section class="container" id="body">
-        <div></div>
+        <div data-ng-view=""></div>
     </section>
 
     <hr />
