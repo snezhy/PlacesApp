@@ -11,9 +11,9 @@ app.config(function($routeProvider){
             templateUrl: 'app/views/places.html',
             controller: "placesController"
         })
-        //.when("/kart", {
-        //    templateURL: 'kart-list.html'
-        //})
+        .when("/about", {
+            templateUrl: 'app/views/about.html'
+        })
         .otherwise({
             redirectTo: '/explore'
         })

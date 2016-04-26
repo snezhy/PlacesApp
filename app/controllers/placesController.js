@@ -16,7 +16,7 @@ app.controller('placesController', function ($scope, placesService, $filter) {
 
     //paging
     $scope.totalRecordsCount = 0;
-    $scope.pageSize = 10;
+    $scope.pageSize = 30;
     $scope.currentPage = 1;
 
     init();
@@ -33,7 +33,7 @@ app.controller('placesController', function ($scope, placesService, $filter) {
 
         placesService.get({ near: $scope.exploreNearby, query: $scope.exploreQuery, limit: $scope.pageSize, offset: offset }, function (placesResult) {
 
-            if (placesResult.response.groups) {console.log("here");
+            if (placesResult.response.groups) {
                 $scope.places = placesResult.response.groups[0].items;
                 $scope.totalRecordsCount = placesResult.response.totalResults;
                 filterPlaces('');
@@ -59,15 +59,9 @@ app.controller('placesController', function ($scope, placesService, $filter) {
 
     $scope.doSearch = function () {
 
-        $scope.currentPage = 1;
         getPlaces();
     };
 
-    $scope.pageChanged = function (page) {
-
-        $scope.currentPage = page;
-        getPlaces();
-    };
 
     $scope.buildCategoryIcon = function (icon) {
 
