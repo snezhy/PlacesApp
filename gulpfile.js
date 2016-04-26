@@ -5,7 +5,7 @@
 // include gulp
 var gulp = require('gulp');
 
-// include plug-ins
+//// include plug-ins
 var changed = require('gulp-changed');
 var minifyHTML = require('gulp-minify-html');
 
@@ -54,3 +54,26 @@ gulp.task('bundle-scripts', function() {
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(jsPath.jsDest));
 });
+
+var Server = require('karma').Server;
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
+});
+
+/**
+ * Watch for file changes and re-run tests on each change
+ */
+gulp.task('tdd', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js'
+    }, done).start();
+});
+
+gulp.task('default', ['tdd']);
