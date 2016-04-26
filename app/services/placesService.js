@@ -4,14 +4,15 @@
 
 var requestParms = {
     clientId: "LSYLG2JMCTP1GIZUOK1BPGH3MXSU53SARHCPWTCWVAT1SU1T",
-    clientSecret: "3AARGT0JQCW5SFFA2HDWWD04PTONWP2X4OCSTKH4HEY2V2HF"
+    clientSecret: "3AARGT0JQCW5SFFA2HDWWD04PTONWP2X4OCSTKH4HEY2V2HF",
+    version: "20131230"
 }
 
 app.factory('placesService', function ($resource) {
 
     var requestUri = 'https://api.foursquare.com/v2/venues/:action';
 
-    return $resource(requestUri,
+    var resource = $resource(requestUri,
         {
             action: 'explore',
             client_id: requestParms.clientId,
@@ -23,5 +24,7 @@ app.factory('placesService', function ($resource) {
         {
             get: { method: 'JSONP' }
         });
+
+    return resource;
 
 });

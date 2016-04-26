@@ -3,12 +3,18 @@
  */
 
 var app = angular.module('PlacesApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);
-app.config(function ($routeProvider) {
 
-    $routeProvider.when("/explore", {
-        controller: "placesController",
-        templateUrl: "/app/views/places.html"
-    });
-    $routeProvider.otherwise({ redirectTo: "/explore" });
 
+app.config(function($routeProvider){
+    $routeProvider
+        .when("/explore", {
+            templateUrl: 'app/views/places.html',
+            controller: "placesController"
+        })
+        //.when("/kart", {
+        //    templateURL: 'kart-list.html'
+        //})
+        .otherwise({
+            redirectTo: '/explore'
+        })
 });
